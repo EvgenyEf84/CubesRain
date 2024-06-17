@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Renderer), typeof(Rigidbody))]
 public class Cube : MonoBehaviour
 {
     private Renderer _renderer;
@@ -20,16 +19,6 @@ public class Cube : MonoBehaviour
         _defaltColor = _renderer.material.color;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Platform platform) && _isChanged == false)
-        {
-            SetColor();
-            _isChanged = true;
-            StartCoroutine(ReturnPool());
-        }
-    }
-
     private void OnEnable()
     {
         _isChanged = false;
@@ -41,16 +30,26 @@ public class Cube : MonoBehaviour
         Returned?.Invoke(this);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Platform platform) && _isChanged == false)
+        {
+            SetRandomColor();
+            _isChanged = true;
+            StartCoroutine(ReturnPool());
+        }
+    }    
+
     private IEnumerator ReturnPool()
     {
         int minLifeTime = 2;
         int maxLifeTime = 6;
 
         yield return new WaitForSeconds(UnityEngine.Random.Range(minLifeTime, maxLifeTime));
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);        
     }
 
-    private void SetColor()
+    private void SetRandomColor()
     {
         _renderer.material.color = UnityEngine.Random.ColorHSV();
     }
