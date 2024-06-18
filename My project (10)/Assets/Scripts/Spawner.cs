@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     {
         _pool = new ObjectPool<Cube>(
             createFunc: () => Instantiate(_prefab),
-            actionOnGet: (cube) => GetAction(cube),
+            actionOnGet:  GetCube,
             actionOnRelease: (cube) => cube.gameObject.SetActive(false),
             actionOnDestroy: (cube) => Destroy(cube.gameObject),
             defaultCapacity: _poolCapacity,
@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
         cube.Returned -= ReturnToPool;       
     }
 
-    private void GetAction(Cube cube)
+    private void GetCube(Cube cube)
     {
         cube.Returned += ReturnToPool;
         cube.gameObject.SetActive(true);

@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4208b2c9b13d9f4589e458d84ce6f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 3428460919132657646, guid: 98a15ee5a0af49c4c9b197b62d631b7c, type: 3}
+  _prefab: {fileID: 5079362236601952058, guid: a67cb2ffbbf47d245ba94eda627ca3cc, type: 3}
   _delay: 0.5
   _poolCapacity: 0
   _poolMaxSize: 2
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4208b2c9b13d9f4589e458d84ce6f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 5079362236601952058, guid: a67cb2ffbbf47d245ba94eda627ca3cc, type: 3}
   _delay: 0.5
   _poolCapacity: 0
   _poolMaxSize: 2
